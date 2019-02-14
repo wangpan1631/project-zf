@@ -1,0 +1,10 @@
+body {
+    color: red;
+}
+body {
+    background: gray;
+}
+body div {
+  border: 1px solid green;
+}
+
