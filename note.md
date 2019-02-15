@@ -63,3 +63,18 @@ less-loader（把less编译成css） 安装的命令是npm i less less-loader -D
 webpack插件都是类
 **extract-text-webpack-plugin**，只支持webpack 4以下提取css文件，webpack 4提取css文件的配置方法**mini-css-extract-plugin**
 
+**autoprefixer**
+ 自动添加浏览器前缀
+ 安装：npm i postcss-loader autoprefixer -D
+
+压缩css **optimize-css-assets-webpack-plugin**要配合**uglifyjs-webpack-plugin**一起使用
+
+####转换ES6语法
+主要使用babel
+npm i babel-loader @babel/core @babel/preset-env -D
+
+@babel/plugin-proposal-class-properties
+
+####处理js语法及校验
+
+

@@ -2,7 +2,19 @@
 let path = require('path') //node的核心模块
 let HtmlWebpackPlugin = require('html-webpack-plugin')
 let MiniCssExtractPlugin = require('mini-css-extract-plugin')
+let OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin")
+let UglifyJsPlugin = require("uglifyjs-webpack-plugin")
 module.exports = {
+    optimization: { //优化项
+        minimizer: [
+          new UglifyJsPlugin({
+            cache: true,
+            parallel: true,
+            sourceMap: true // set to true if you want JS source maps
+          }),
+          new OptimizeCSSAssetsPlugin() //压缩css (但是没有起作用?!)
+        ]
+      },
     devServer: { //开发服务器的配置
         port: 3003,
         progress: true,
@@ -31,6 +43,20 @@ module.exports = {
     module: { //模块
         rules: [
             {
+                test: /\.js$/,
+                use: {
+                    loader:'babel-loader',
+                    options: { //用babel-loader 把es6->es5
+                        presets: [
+                            '@babel/preset-env'
+                        ],
+                        plugins: [
+                            '@babel/plugin-proposal-class-properties'
+                        ]
+                    }
+                }
+            },
+            {
                 test: /\.css$/,
                 use: [
                     // {
@@ -40,7 +66,7 @@ module.exports = {
                     //     }
                     // },
                     MiniCssExtractPlugin.loader,
-                    'css-loader'] // css-loader 负责解析 @import这种语法
+                    'css-loader', 'postcss-loader'] // css-loader 负责解析 @import这种语法
             },
             {
                 test: /\.less$/,
@@ -52,7 +78,7 @@ module.exports = {
                     //     }
                     // },
                     MiniCssExtractPlugin.loader,
-                    'css-loader', 'less-loader'] // css-loader 负责解析 @import这种语法
+                    'css-loader', 'postcss-loader', 'less-loader'] // css-loader 负责解析 @import这种语法
             }
         ]
     }
