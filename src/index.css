@@ -1,5 +1,6 @@
 @import './a.css';
 body {
-    background: gray;
+    /* background: gray; */
     transform: rotate(30deg);
+    background: url('./images/img02.jpg') 0 0 no-repeat;
 }

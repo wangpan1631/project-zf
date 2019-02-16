@@ -25,8 +25,7 @@ module.exports = {
     entry: './src/index.js',
     output: {
         filename: 'bundle.[hash:8].js', // 冒号8表示只显示8位hash值
-        path: path.resolve(__dirname, 'build'), //以当前目录生成一个build目录，必须是绝对路径
-        // publicPath: 'http://wangpan.com' //公共路径
+        path: path.resolve(__dirname, 'build') //以当前目录生成一个build目录，必须是绝对路径
     },
     plugins: [ //数组 放着所有的webpack插件
         new HtmlWebpackPlugin({
@@ -39,7 +38,7 @@ module.exports = {
             hash: true //避免缓存 增加hash戳
         }),
         new MiniCssExtractPlugin({
-            filename: 'css/main.css'
+            filename: 'main.css'
         }),
         new webpack.ProvidePlugin({ //在每个模块中都注入$
             $: 'jquery'
@@ -62,23 +61,6 @@ module.exports = {
             //     test: require.resolve('jquery'),
             //     use: 'expose-loader?$'
             // },
-            {
-                test: /\.html$/,
-                use: 'html-withimg-loader'
-            },
-            {
-                test: /\.(png|jpg|gif)/,
-                // use: 'file-loader'
-                //我们可以做一个限制，当图片小于多少K的时候，我们用base64转化，否则用file-loader产生真实的图片
-                use: {
-                    loader: 'url-loader',
-                    options: {
-                        limit: 200*1024, //200K
-                        outputPath: '/img/',
-                        publicPath: 'http://wangpan.com' //只给图片加路径
-                    }
-                } 
-            },
             {
                 test: /\.js$/,
                 use: {
