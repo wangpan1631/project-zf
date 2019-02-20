@@ -4,11 +4,11 @@
 npm i webpack webpack-cli -D
 ```
 **小坑：npm安装的依赖的名字不能和package.json文件里的项目name一样**
-####webpack 可以进行0配置
+#### webpack 可以进行0配置
 -打包工具 ->输出的结果（js模块）
 -打包支持我们的js的模块化
 
-####手动配置webpack
+#### 手动配置webpack
 在项目根目录手动创建一个webpack.config.js文件
 
 **package.json文件里面的scripts是设置脚本的**
@@ -22,7 +22,7 @@ webpack-dev-server是一个小型的Node.js Express服务器,它使用webpack-de
 
 #### html-webpack-plugin
 
-####样式处理
+#### 样式处理
 loader的特点，希望单一，
 loader的用法，字符串只用一个loader，多个loader需要数组[]，如下：
 webpack.config.js文件中的部分
@@ -59,7 +59,7 @@ css-loader 负责解析@import这种语法
 style-loader 负责把css插入到head标签中
 less-loader（把less编译成css） 安装的命令是npm i less less-loader -D
 
-####webpack 提取css样式文件
+#### webpack 提取css样式文件
 webpack插件都是类
 **extract-text-webpack-plugin**，只支持webpack 4以下提取css文件，webpack 4提取css文件的配置方法**mini-css-extract-plugin**
 
@@ -69,21 +69,21 @@ webpack插件都是类
 
 压缩css **optimize-css-assets-webpack-plugin**要配合**uglifyjs-webpack-plugin**一起使用
 
-####转换ES6语法
+#### 转换ES6语法
 主要使用babel
 npm i babel-loader @babel/core @babel/preset-env -D
 
 @babel/plugin-proposal-class-properties
 
-####处理js语法及校验
+#### 处理js语法及校验
 **@babel/plugin-transform-runtime**
 **@babel/runtime**
 **@babel/polyfill**
 
-####eslint 代码检查
+#### eslint 代码检查
 npm i eslint eslint-loader -D
 
-####全局变量引入问题
+#### 全局变量引入问题
 expose-loader 暴露全局的loader，内联的loader
 内联loader可以直接在代码里面使用：如：expose?$!jquery   ->   jq暴露一个全局的$出去
 1. 使用expose-loader 暴露到window上
@@ -93,7 +93,7 @@ expose-loader 暴露全局的loader，内联的loader
 **loader 类型**
 pre 前面执行的loader、normal 普通的loader、内联的loader、后置post loader
 
-####图片处理
+#### 图片处理
 webpack打包图片
 图片引入方式：
 1. js中创建图片引入
@@ -113,7 +113,7 @@ npm i html-withimg-loader -D
 它的作用是，我们可以对图片做一个限制，当图片小于多少K的时候，转化为base64，否则再用file-loader来产生真实的图片
 npm i url-loader -D
 
-####打包文件分类
+#### 打包文件分类
 
 ####打包多页应用
 
